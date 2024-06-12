@@ -11,7 +11,9 @@ const Update = () => {
 
   // get single user data
   const getSingleUser = async () => {
-    const response = await fetch(`http://localhost:3001/api/user/${id}`);
+    const response = await fetch(
+      `https://contacts-backend-mern-project.onrender.com/api/user/${id}`
+    );
     const result = await response.json();
     if (!response.ok) {
       console.log(result.error);
@@ -19,7 +21,7 @@ const Update = () => {
     }
     if (response.ok) {
       setError("");
-      console.log("updated user", result);
+      // console.log("updated user", result);
       setName(result.name);
       setEmail(result.email);
       setAge(result.age);
@@ -29,16 +31,19 @@ const Update = () => {
   // send updated data to backend
   const handleUpdate = async (e) => {
     e.preventDefault();
-    console.log("Elansezhian");
+    // console.log("Elansezhian");
     const updatedUser = { name, email, age };
-    console.log("updatedUser", updatedUser);
-    const response = await fetch(`http://localhost:3001/api/user/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(updatedUser),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // console.log("updatedUser", updatedUser);
+    const response = await fetch(
+      `https://contacts-backend-mern-project.onrender.com/api/user/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(updatedUser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const result = await response.json();
     if (!response.ok) {
       console.log(result.error);

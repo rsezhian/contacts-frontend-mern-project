@@ -11,21 +11,22 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const addUser = { name, email, age };
-    const response = await fetch("http://localhost:3001/api/user", {
-      method: "POST",
-      body: JSON.stringify(addUser),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://contacts-backend-mern-project.onrender.com/api/user",
+      {
+        method: "POST",
+        body: JSON.stringify(addUser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const result = await response.json();
     if (!response.ok) {
       console.log(result.error);
       setError(result.error);
     }
     if (response.ok) {
-      console.log("elansezhianrrrrrrrr");
-      console.log(result);
       setError("");
       setName("");
       setEmail("");

@@ -6,7 +6,9 @@ const Read = () => {
   const [error, setError] = useState("");
 
   async function getData() {
-    const response = await fetch("http://localhost:3001/api/user");
+    const response = await fetch(
+      "https://contacts-backend-mern-project.onrender.com/api/user"
+    );
     const result = await response.json();
     if (!response.ok) {
       console.log(result.error);
@@ -18,9 +20,12 @@ const Read = () => {
   }
 
   const handleDelete = async (id) => {
-    const response = await fetch(`http://localhost:3001/api/user/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://contacts-backend-mern-project.onrender.com/api/user/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const result = await response.json();
     if (!response.ok) {
       console.log(result.error);
@@ -39,7 +44,7 @@ const Read = () => {
     getData();
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="container my-2">
